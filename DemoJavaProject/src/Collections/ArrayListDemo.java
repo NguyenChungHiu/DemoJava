@@ -3,29 +3,39 @@ package Collections;
 import java.util.*;
 
 public class ArrayListDemo {
-	public static void main(String args[]) {
-        // Creating arraylist
+	public static void main(String[] args) {
+        // Create list
         ArrayList<String> list = new ArrayList<String>();
-        // Add objects to arraylist
+        // Add objects to list
         list.add("Java");
         list.add("C++");
         list.add("PHP");
         list.add("Java");
-        // Show list through Iterator
-        Iterator<String> itr = list.iterator();
-        while (itr.hasNext()) {
-            System.out.print(itr.next() + ", ");
-        }
+ 
+        // addAll()
+        ArrayList<String> listA = new ArrayList<String>();
+        listA.addAll(list);
+        System.out.print("listA:");
+        showList(listA);
+ 
+        // retainAll() listA
+        ArrayList<String> listB = new ArrayList<String>();
+        listB.add("Java");
+        listA.retainAll(listB);
+        System.out.print("listA:");
+        showList(listA);
+ 
+        // removeAll() listA
+        list.removeAll(listA);
+        System.out.print("listA:");
+        showList(list);
+    }
+ 
+    public static void showList(ArrayList<String> list) {
         // Show list through for-each
-        System.out.println();
         for (String obj : list) {
-            System.out.print(obj + ", ");
+            System.out.print("\t" + obj + ", ");
         }
-        // Show list through index
         System.out.println();
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            System.out.print(list.get(i) + ", ");
-        }
     }
 }
